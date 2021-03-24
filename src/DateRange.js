@@ -274,4 +274,5 @@ DateRange.propTypes = {
   onDatesChange: PropTypes.func,
   isDateBlocked: PropTypes.func,
   onDisableClicked: PropTypes.func
+
 };
