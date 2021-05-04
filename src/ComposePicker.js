@@ -126,7 +126,8 @@ export default class ComposePicker extends Component {
       return customButton(this.onConfirm);
     }
     return (
-      <TouchableHighlight
+        <View style={{width: '100%', flexDirection: "row", alignItems:"center", justifyContent:"space-between"}}>
+          <TouchableHighlight
         underlayColor={'transparent'}
         onPress={this.onConfirm}
         style={[
@@ -138,6 +139,20 @@ export default class ComposePicker extends Component {
           {this.props.ButtonText ? this.props.ButtonText : '送出'}
         </Text>
       </TouchableHighlight>
+          <TouchableHighlight
+        underlayColor={'transparent'}
+        onPress={()=>{
+          this.setModalVisible(false);
+        }}
+        style={[
+          { width: '80%', marginHorizontal: '3%' },
+        ]}
+      >
+        <Text style={[{ fontSize: 20 }, this.props.ButtonTextStyle]}>
+          {this.props.cancelButtonText ? this.props.CancelButtonText : 'Cancel'}
+        </Text>
+      </TouchableHighlight>
+        </View>
     );
   };
 
@@ -216,6 +231,7 @@ ComposePicker.propTypes = {
   textStartDate: PropTypes.string,
   textEndDate: PropTypes.string,
   dateAlert:PropTypes.string,
+  cancelButtonText:PropTypes.string,
   dateAlertTitle:PropTypes.string
 };
 
