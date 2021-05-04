@@ -101,21 +101,21 @@ export default class ComposePicker extends Component {
     const showContent = this.state.showContent;
     if (!showContent && placeholder) {
       return (
-        <Text
-          allowFontScaling={allowFontScaling}
-          style={[styles.placeholderText, customStyles.placeholderText]}
-        >
-          {placeholder}
-        </Text>
+          <Text
+              allowFontScaling={allowFontScaling}
+              style={[styles.placeholderText, customStyles.placeholderText]}
+          >
+            {placeholder}
+          </Text>
       );
     }
     return (
-      <Text
-        allowFontScaling={allowFontScaling}
-        style={[styles.contentText, customStyles.contentText]}
-      >
-        {this.state.selected}
-      </Text>
+        <Text
+            allowFontScaling={allowFontScaling}
+            style={[styles.contentText, customStyles.contentText]}
+        >
+          {this.state.selected}
+        </Text>
     );
   }
 
@@ -126,33 +126,18 @@ export default class ComposePicker extends Component {
       return customButton(this.onConfirm);
     }
     return (
-        <View style={{width: '100%', flexDirection: "row", alignItems:"center", justifyContent:"space-between"}}>
-          <TouchableHighlight
-        underlayColor={'transparent'}
-        onPress={this.onConfirm}
-        style={[
-          { width: '80%', marginHorizontal: '3%' },
-          this.props.ButtonStyle
-        ]}
-      >
-        <Text style={[{ fontSize: 20 }, this.props.ButtonTextStyle]}>
-          {this.props.ButtonText ? this.props.ButtonText : '送出'}
-        </Text>
-      </TouchableHighlight>
-          <TouchableHighlight
-        underlayColor={'transparent'}
-        onPress={()=>{
-          this.setModalVisible(false);
-        }}
-        style={[
-          { width: '80%', marginHorizontal: '3%' },
-        ]}
-      >
-        <Text style={[{ fontSize: 20 }, this.props.ButtonTextStyle]}>
-          {this.props.cancelButtonText ? this.props.CancelButtonText : 'Cancel'}
-        </Text>
-      </TouchableHighlight>
-        </View>
+        <TouchableHighlight
+            underlayColor={'transparent'}
+            onPress={this.onConfirm}
+            style={[
+              { width: '80%', marginHorizontal: '3%' },
+              this.props.ButtonStyle
+            ]}
+        >
+          <Text style={[{ fontSize: 20 }, this.props.ButtonTextStyle]}>
+            {this.props.ButtonText ? this.props.ButtonText : '送出'}
+          </Text>
+        </TouchableHighlight>
     );
   };
 
@@ -164,77 +149,76 @@ export default class ComposePicker extends Component {
     style = { ...style, ...this.props.style };
 
     return (
-      <TouchableHighlight
-        underlayColor={'transparent'}
-        onPress={() => {
-          this.setModalVisible(true);
-        }}
-        style={[
-          { height: '100%', justifyContent: 'center' },
-          style
-        ]}
-      >
-        <View>
+        <TouchableHighlight
+            underlayColor={'transparent'}
+            onPress={() => {
+              this.setModalVisible(true);
+            }}
+            style={[
+              { height: '100%', justifyContent: 'center' },
+              style
+            ]}
+        >
           <View>
-            <View style={[customStyles.contentInput, styles.contentInput]}>
-              {this.getTitleElement()}
-            </View>
-          </View>
-          <Modal
-            animationType="slide"
-            onRequestClose={() => this.setModalVisible(false)}
-            transparent={false}
-            visible={this.state.modalVisible}
-          >
-            <View style={{ flex: 1, flexDirection: 'column' , backgroundColor: this.props.calendarBgColor}}>
-              <View style={{ height: '90%' }}>
-                <DateRange
-                  headFormat={this.props.headFormat}
-                  customStyles={customStyles}
-                  markText={this.props.markText}
-                  onDatesChange={this.onDatesChange}
-                  isDateBlocked={this.isDateBlocked}
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  focusedInput={this.state.focus}
-                  calendarBgColor={this.props.calendarBgColor || undefined}
-                  selectedBgColor={this.props.selectedBgColor || undefined}
-                  selectedTextColor={this.props.selectedTextColor || undefined}
-                  mode={this.props.mode || 'single'}
-                  currentDate={this.state.currentDate}
-                  textStartDate={this.props.textStartDate || 'Start Date'}
-                  textEndDate={this.props.textEndDate || 'End Date'}
-                />
+            <View>
+              <View style={[customStyles.contentInput, styles.contentInput]}>
+                {this.getTitleElement()}
               </View>
-              <View
-                style={{
-                  paddingBottom: '5%',
-                  width: '100%',
-                  height: '10%',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                {this.renderButton()}
-                <TouchableHighlight
-                    underlayColor={'transparent'}
-                    onPress={()=>{
-                      this.setModalVisible(false);
+            </View>
+            <Modal
+                animationType="slide"
+                onRequestClose={() => this.setModalVisible(false)}
+                transparent={false}
+                visible={this.state.modalVisible}
+            >
+              <View style={{ flex: 1, flexDirection: 'column' , backgroundColor: this.props.calendarBgColor}}>
+                <View style={{ height: '90%' }}>
+                  <DateRange
+                      headFormat={this.props.headFormat}
+                      customStyles={customStyles}
+                      markText={this.props.markText}
+                      onDatesChange={this.onDatesChange}
+                      isDateBlocked={this.isDateBlocked}
+                      startDate={this.state.startDate}
+                      endDate={this.state.endDate}
+                      focusedInput={this.state.focus}
+                      calendarBgColor={this.props.calendarBgColor || undefined}
+                      selectedBgColor={this.props.selectedBgColor || undefined}
+                      selectedTextColor={this.props.selectedTextColor || undefined}
+                      mode={this.props.mode || 'single'}
+                      currentDate={this.state.currentDate}
+                      textStartDate={this.props.textStartDate || 'Start Date'}
+                      textEndDate={this.props.textEndDate || 'End Date'}
+                  />
+                </View>
+                <View
+                    style={{
+                      paddingBottom: '5%',
+                      width: '100%',
+                      height: '10%',
+                      flexDirection: 'row',
+                      alignItems: 'center'
                     }}
-                    style={[
-                      { width: '100%', marginHorizontal: '3%', left:0 },
-                    ]}
                 >
-                  <Text style={[{ fontSize: 20, color:'black' }]}>
-                    {this.props.cancelButtonText ? this.props.cancelButtonText : 'Cancel'}
-                  </Text>
-                </TouchableHighlight>
+                  {this.renderButton()}
+                  <TouchableHighlight
+                      underlayColor={'transparent'}
+                      onPress={()=>{
+                        this.setModalVisible(false);
+                      }}
+                      style={[
+                        { width: '100%', marginHorizontal: '3%', },
+                      ]}
+                  >
+                    <Text style={[{ fontSize: 20, color:'black' }]}>
+                      {this.props.cancelButtonText ? this.props.cancelButtonText : 'Cancel'}
+                    </Text>
+                  </TouchableHighlight>
+                </View>
               </View>
-            </View>
-          </Modal>
-        </View>
-      </TouchableHighlight>
+            </Modal>
+          </View>
+        </TouchableHighlight>
     );
   }
 }
