@@ -217,6 +217,19 @@ export default class ComposePicker extends Component {
                 }}
               >
                 {this.renderButton()}
+                <TouchableHighlight
+                    underlayColor={'transparent'}
+                    onPress={()=>{
+                      this.setModalVisible(false);
+                    }}
+                    style={[
+                      { width: '100%', marginHorizontal: '3%', left:0 },
+                    ]}
+                >
+                  <Text style={[{ fontSize: 20, color:'black' }]}>
+                    {this.props.cancelButtonText ? this.props.cancelButtonText : 'Cancel'}
+                  </Text>
+                </TouchableHighlight>
               </View>
             </View>
           </Modal>
