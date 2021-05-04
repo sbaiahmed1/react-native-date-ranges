@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, Modal, Text } from 'react-native';
+import {View, TouchableHighlight, Modal, Text, Alert} from 'react-native';
 import PropTypes from 'prop-types';
 import DateRange from './DateRange';
 import moment from 'moment';
@@ -93,7 +93,7 @@ export default class ComposePicker extends Component {
         });
       }
     } else {
-      alert('please select correct date');
+      Alert.alert(this.props.dateAlertTitle,this.props.dateAlert || 'Please select a valid date');
     }
   };
   getTitleElement() {
@@ -214,7 +214,9 @@ export default class ComposePicker extends Component {
 ComposePicker.propTypes = {
   dateSplitter: PropTypes.string,
   textStartDate: PropTypes.string,
-  textEndDate: PropTypes.string
+  textEndDate: PropTypes.string,
+  dateAlert:PropTypes.string,
+  dateAlertTitle:PropTypes.string
 };
 
 ComposePicker.defaultProps = { dateSplitter: '->' };
