@@ -130,7 +130,7 @@ export default class ComposePicker extends Component {
             underlayColor={'transparent'}
             onPress={this.onConfirm}
             style={[
-              { width: '80%', marginHorizontal: '3%' },
+              { width: 'auto', marginHorizontal: '3%' },
               this.props.ButtonStyle
             ]}
         >
@@ -196,8 +196,10 @@ export default class ComposePicker extends Component {
                       paddingBottom: '5%',
                       width: '100%',
                       height: '10%',
+                      paddingHorizontal:'2%',
                       flexDirection: 'row',
-                      alignItems: 'center'
+                      alignItems: 'center',
+                      justifyContent:"space-between"
                     }}
                 >
                   {this.renderButton()}
@@ -207,7 +209,7 @@ export default class ComposePicker extends Component {
                         this.setModalVisible(false);
                       }}
                       style={[
-                        { width: '100%', marginHorizontal: '3%', },
+                        { width: 'auto', marginHorizontal: '3%', },
                       ]}
                   >
                     <Text style={[{ fontSize: 20, color:'black' }]}>
